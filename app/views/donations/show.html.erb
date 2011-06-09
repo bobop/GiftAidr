@@ -13,20 +13,20 @@
 
 	<p>
 	  <b>Amount:</b>
-	  <%= @donation.amount %>
+	  <%= number_to_currency(@donation.amount, :unit => "£") %>
 	</p>
 
 	<p>
-	  <b>Donation date:</b>
-	  <%= @donation.donation_date %>
+	  <b>Date:</b>
+	  <%= long_date(@donation.donation_date) %>
 	</p>
-
+	<% unless @donation.notes.blank? %>
 	<p>
 	  <b>Notes:</b>
 	  <%= @donation.notes %>
 	</p>
-	
+	<% end %>
 	<p>
-		<%= link_to "Edit", edit_donation_path(@donation), 'data-role' => 'button', 'data-icon' => "gear" %>
+	  <%= link_to "Edit", edit_donation_path(@donation), 'data-role' => 'button', 'data-icon' => "gear" %>
 	</p>
 </div>

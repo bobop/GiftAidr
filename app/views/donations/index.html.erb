@@ -13,7 +13,7 @@
 	  <ul data-role="listview">
 	  <% @donations.each do |donation| %>
 	  	<li>
-			<%= link_to donation.charity, donation %>
+			<%= link_to short_date(donation.donation_date)+': '+donation.charity, donation %>
 			<%= link_to 'edit donation', edit_donation_path(donation), "data-icon" => "gear" %>
 		</li>
 	<% end %>
