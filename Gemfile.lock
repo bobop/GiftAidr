@@ -84,3 +84,4 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 3.0.4)
+  rake (!= 0.9.0)
