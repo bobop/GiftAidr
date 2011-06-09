@@ -1,0 +1,32 @@
+<div data-role="header">
+	<h1><%= @donation.charity %></h1>
+	<%= link_to 'Home', donations_url, "class" => "ui-btn-right" %>
+</div>
+<div data-role="content">
+
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <b>Charity:</b>
+	  <%= @donation.charity %>
+	</p>
+
+	<p>
+	  <b>Amount:</b>
+	  <%= @donation.amount %>
+	</p>
+
+	<p>
+	  <b>Donation date:</b>
+	  <%= @donation.donation_date %>
+	</p>
+
+	<p>
+	  <b>Notes:</b>
+	  <%= @donation.notes %>
+	</p>
+	
+	<p>
+		<%= link_to "Edit", edit_donation_path(@donation), 'data-role' => 'button', 'data-icon' => "gear" %>
+	</p>
+</div>

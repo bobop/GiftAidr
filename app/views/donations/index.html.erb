@@ -1,0 +1,22 @@
+<% unless current_user %>
+	<div data-role="header">
+		<h1>Welcome to GiftAidr</h1>
+		<%= link_to "Sign Up", new_user_registration_path %>
+		<%= link_to 'Login', login_path %>
+	</div>
+<% else %>
+	<div data-role="header">
+		<h1>Donations</h1>
+		<%= link_to 'Add', new_donation_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
+	</div>
+	<div data-role="content">
+	  <ul data-role="listview">
+	  <% @donations.each do |donation| %>
+	  	<li>
+			<%= link_to donation.charity, donation %>
+			<%= link_to 'edit donation', edit_donation_path(donation), "data-icon" => "gear" %>
+		</li>
+	<% end %>
+	  </ul>
+	</div>
+<% end %>
