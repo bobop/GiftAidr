@@ -1,7 +1,4 @@
-<div data-role="header">
-	<h1>Editing Donation</h1>
-	<%= link_to 'Delete', @donation, :method => :delete, "data-icon" => "delete", "class" => "ui-btn-right" %>
-</div>
 <div data-role="content">
 	<%= render 'form' %>
+	<%= link_to 'Delete', @donation, :method => :delete, "data-icon" => "delete", 'data-role' => 'button' %>
 </div>

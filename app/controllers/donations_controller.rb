@@ -3,6 +3,7 @@ class DonationsController < ApplicationController
   # GET /donations.xml
   def index
     @donations = current_user.donations if current_user
+    @total = Donation.sum(:amount, :conditions =>['user_id = ?', current_user.id]) if current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,7 +63,7 @@ class DonationsController < ApplicationController
 
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
-        format.html { redirect_to(@donation, :notice => 'Donation was successfully updated.') }
+        format.html { redirect_to(root_url, :notice => 'Donation was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

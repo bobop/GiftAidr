@@ -1,22 +1,32 @@
 <% unless current_user %>
-	<div data-role="header">
-		<h1>Welcome to GiftAidr</h1>
-		<%= link_to "Sign Up", new_user_registration_path %>
-		<%= link_to 'Login', login_path %>
+	<div data-role="content">
+		<div class="centered">
+			<%= image_tag "giftaidr_logo.png" %>
+			<p>Record your GiftAid donations</p><p>Make your tax return easier</p><p>Feel good!</p>
+			<%= link_to "Sign Up", new_user_registration_path, 'data-role' => 'button', 'data-inline' => 'true' %>
+			<%= link_to "Login", login_path, 'data-role' => 'button', 'data-theme' => "b", 'data-inline' => 'true' %>
+		</div>
 	</div>
 <% else %>
-	<div data-role="header">
-		<h1>Donations</h1>
-		<%= link_to 'Add', new_donation_path, "data-icon" => "plus", "class" => "ui-btn-right" %>
+	<div data-role="header" data-theme="c" data-backbtn="false">
+		<h1>My Donations</h1>
+		<%= link_to 'Add', new_donation_path, "class" => "ui-btn-right", 'data-icon' => 'plus' %>
 	</div>
 	<div data-role="content">
 	  <ul data-role="listview">
 	  <% @donations.each do |donation| %>
-	  	<li>
-			<%= link_to short_date(donation.donation_date)+': '+donation.charity, donation %>
+	  	<li class="ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-btn-up-c">
+			<%= link_to donation do %>
+				<h3><%= donation.charity %></h3>
+				<p><%= number_to_currency(donation.amount, :unit => "£")+': '+short_date(donation.donation_date) %></p>
+			<% end %>
 			<%= link_to 'edit donation', edit_donation_path(donation), "data-icon" => "gear" %>
 		</li>
 	<% end %>
 	  </ul>
+	  
+	</div>
+	<div data-role="content">
+		<h3>Total Donated: <%= number_to_currency(@total, :unit => "£") %></h3>
 	</div>
 <% end %>

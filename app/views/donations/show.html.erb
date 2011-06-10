@@ -1,32 +1,21 @@
-<div data-role="header">
-	<h1><%= @donation.charity %></h1>
-	<%= link_to 'Home', donations_url, "class" => "ui-btn-right" %>
-</div>
 <div data-role="content">
 
 	<p id="notice"><%= notice %></p>
 
-	<p>
-	  <b>Charity:</b>
-	  <%= @donation.charity %>
-	</p>
+	<h2><%= @donation.charity %></h2>
 
-	<p>
-	  <b>Amount:</b>
-	  <%= number_to_currency(@donation.amount, :unit => "£") %>
-	</p>
+	<p><b><%= number_to_currency(@donation.amount, :unit => "£") %></b></p>
 
-	<p>
-	  <b>Date:</b>
-	  <%= long_date(@donation.donation_date) %>
-	</p>
+	<p><%= long_date(@donation.donation_date) %></p>
+	
 	<% unless @donation.notes.blank? %>
 	<p>
-	  <b>Notes:</b>
+	  <b>Notes:</b><br>
 	  <%= @donation.notes %>
 	</p>
 	<% end %>
 	<p>
-	  <%= link_to "Edit", edit_donation_path(@donation), 'data-role' => 'button', 'data-icon' => "gear" %>
+	  <%= link_to "Edit", edit_donation_path(@donation), 'data-role' => 'button', 'data-icon' => "gear", 'data-inline' => 'true', 'data-theme' => "b" %>
+	  <%= link_to "Delete", @donation, :method => :delete, "data-icon" => "delete", 'data-role' => 'button', 'data-inline' => 'true' %>
 	</p>
 </div>
