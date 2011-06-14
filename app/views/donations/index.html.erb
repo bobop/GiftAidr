@@ -1,8 +1,9 @@
 <% unless current_user %>
 	<div data-role="content">
 		<div class="centered">
-			<%= image_tag "giftaidr_logo.png" %>
-			<p>Record your GiftAid donations</p><p>Make your tax return easier</p><p>Feel good!</p>
+			<h1><%= image_tag "giftaidr_logo.png" %></h1>
+			<h2>For Freelancers & Sole Traders</h2>
+			<p>Record your GiftAid donations.<br />Make your tax return easier.<br />Feel good!</p>
 			<%= link_to "Sign Up", new_user_registration_path, 'data-role' => 'button', 'data-inline' => 'true' %>
 			<%= link_to "Login", login_path, 'data-role' => 'button', 'data-theme' => "b", 'data-inline' => 'true' %>
 		</div>
@@ -27,6 +28,11 @@
 	  
 	</div>
 	<div data-role="content">
-		<h3>Total Donated: <%= number_to_currency(@total, :unit => "£") %></h3>
+		<h3>Total Donated: <%= number_to_currency(@total/0.8, :unit => "£") %></h3>
+		<p class="donation_note">based on donations of <%= number_to_currency(@total, :unit => "£") %></p>
+		<p class="claimback_note">
+			You can claim back <%= number_to_currency((@total/0.8)*0.2, :unit => "£") %> if you pay the higher tax rate of 40%<br />
+			You can claim back <%= number_to_currency(((@total/0.8)*0.2)+((@total/0.8)*0.1), :unit => "£") %> if you pay the higher tax rate of 50%
+		</p>
 	</div>
 <% end %>

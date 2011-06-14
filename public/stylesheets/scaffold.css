@@ -17,3 +17,9 @@
 h3 {
 	margin: 0 0 20px 0;
 }
+p.donation_note {
+	margin-top: -15px;
+}
+p.claimback_note {
+	font-size: 10px;
+}

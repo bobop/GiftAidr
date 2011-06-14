@@ -10,13 +10,28 @@
 </head>
 <body>
 	<div data-role="page">
-		<div data-role="header" class="head_bar" data-theme="b">
-			<h1><%= image_tag "giftaidr_logo_sm.png" %></h1>
-		</div>
+		<% unless @welcome %>
+			<div data-role="header" class="head_bar" data-theme="b">
+				<h1><%= link_to(image_tag("giftaidr_logo_sm.png"), root_url) %></h1>
+			</div>
+		<% end %>
 		<%= yield %>
 		<div data-role="footer" class="ui-bar" data-theme="b" data-position="fixed">
-			<%= link_to 'Logout', logout_path, 'data-role' => 'button', "class" => "ui-btn-right" if current_user %> &copy; bobop 2011
+			<%= link_to 'Logout', logout_path, 'data-role' => 'button', "class" => "ui-btn-right" if current_user %> &copy; 2011 <%= link_to "bobop", "http://bobop.co.uk", 'data-type' => 'horizontal' %>
 		</div><!-- /footer -->
 	</div>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-157020-32']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 </body>
 </html>

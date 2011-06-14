@@ -4,6 +4,7 @@ class DonationsController < ApplicationController
   def index
     @donations = current_user.donations if current_user
     @total = Donation.sum(:amount, :conditions =>['user_id = ?', current_user.id]) if current_user
+    @welcome = true if !current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class DonationsController < ApplicationController
   # GET /donations/1
   # GET /donations/1.xml
   def show
-    @donation = Donation.find(params[:id])
+    @donation = current_user.donations.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
