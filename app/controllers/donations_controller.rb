@@ -36,7 +36,7 @@ class DonationsController < ApplicationController
 
   # GET /donations/1/edit
   def edit
-    @donation = Donation.find(params[:id])
+    @donation = current_user.donations.find(params[:id])
   end
 
   # POST /donations
