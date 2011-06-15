@@ -1,10 +1,13 @@
 class DonationsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
   # GET /donations
   # GET /donations.xml
   def index
     @donations = current_user.donations if current_user
     @total = Donation.sum(:amount, :conditions =>['user_id = ?', current_user.id]) if current_user
     @welcome = true if !current_user
+    
+    @overall = Donation.sum(:amount)
 
     respond_to do |format|
       format.html # index.html.erb

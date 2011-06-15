@@ -3,9 +3,12 @@
 		<div class="centered">
 			<h1><%= image_tag "giftaidr_logo.png" %></h1>
 			<h2>For Freelancers & Sole Traders</h2>
-			<p>Record your GiftAid donations.<br />Make your tax return easier.<br />Feel good!</p>
+			<h3>Record your GiftAid donations.<br />Make your tax return easier.<br />Feel good!</h3>
 			<%= link_to "Sign Up", new_user_registration_path, 'data-role' => 'button', 'data-inline' => 'true' %>
 			<%= link_to "Login", login_path, 'data-role' => 'button', 'data-theme' => "b", 'data-inline' => 'true' %>
+			<!--<p><strong>GiftAidr has recorded <%= number_to_currency(@overall, :unit => "£") %> of GiftAid donations!</strong></p>-->
+			<p>GiftAidr is a <strong>secure</strong> and <strong>easy</strong> way to keep track of your GiftAid donations.</p>
+			<p>Don't stress out trying to remember how much you donated last year while completing your tax return - GiftAidr will tell you!</p>
 		</div>
 	</div>
 <% else %>
