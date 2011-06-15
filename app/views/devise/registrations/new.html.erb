@@ -11,6 +11,9 @@
 
 	  <p><%= f.label :password_confirmation %>
 	  <%= f.password_field :password_confirmation %></p>
+	  
+	  <p>By clicking "Sign Up" I declare that I agree with the <%= link_to "Terms & Conditions", terms_and_conditions_path %>
+		 and <%= link_to "Privacy Policy", privacy_policy_path %></p>
 
 	  <p><%= f.submit "Sign up", 'data-theme' => "b" %></p>
 	<% end %>

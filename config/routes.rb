@@ -1,4 +1,7 @@
 Giftaidr::Application.routes.draw do
+  match '/privacy_policy' => 'pages#privacy_policy', :as => 'privacy_policy'
+  match '/terms_and_conditions' => 'pages#terms_and_conditions', :as => 'terms_and_conditions'
+  
   resources :donations
 
   devise_for :users
