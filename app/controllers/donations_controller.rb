@@ -45,8 +45,7 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
-    @donation = Donation.new(params[:donation])
-    @donation.user_id = current_user.id
+    @donation = current_user.donations.new(params[:donation])
     @donation.donation_date = Time.now
 
     respond_to do |format|
@@ -63,7 +62,7 @@ class DonationsController < ApplicationController
   # PUT /donations/1
   # PUT /donations/1.xml
   def update
-    @donation = Donation.find(params[:id])
+    @donation = current_user.donations.find(params[:id])
 
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
@@ -79,7 +78,7 @@ class DonationsController < ApplicationController
   # DELETE /donations/1
   # DELETE /donations/1.xml
   def destroy
-    @donation = Donation.find(params[:id])
+    @donation = current_user.donations.find(params[:id])
     @donation.destroy
 
     respond_to do |format|
