@@ -1,7 +1,7 @@
 <% unless current_user %>
 	<div data-role="content">
 		<div class="centered">
-			<h1><%= image_tag "giftaidr_logo.png" %></h1>
+			<h1><%= image_tag "giftaidr_logo.png", :width => "280px" %></h1>
 			<h2>For Freelancers & Sole Traders</h2>
 			<h3>Record your GiftAid donations.<br />Make your tax return easier.<br />Feel good!</h3>
 			<%= link_to "Sign Up", new_user_registration_path, 'data-role' => 'button', 'data-inline' => 'true' %>
@@ -9,6 +9,9 @@
 			<!--<p><strong>GiftAidr has recorded <%= number_to_currency(@overall, :unit => "£") %> of GiftAid donations!</strong></p>-->
 			<p>GiftAidr is a <strong>secure, free</strong> and <strong>easy</strong> way to keep track of your GiftAid donations.</p>
 			<p>Don't stress out trying to remember how much you donated last year while completing your tax return - GiftAidr will tell you!</p>
+			<p><a href="https://twitter.com/giftaidr" class="twitter-follow-button" data-show-count="false" data-width="120px">Follow @giftaidr</a></p>
+			<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+			<p><strong>Help improve GiftAidr:</strong><br /><%= link_to "Take Our Survey", "http://survey.io/survey/d81e7", 'data-role' => 'button', 'data-inline' => 'true' %></p>
 		</div>
 	</div>
 <% else %>
@@ -37,5 +40,8 @@
 			You can claim back <%= number_to_currency((@total/0.8)*0.2, :unit => "£") %> if you pay the higher tax rate of 40%<br />
 			You can claim back <%= number_to_currency(((@total/0.8)*0.2)+((@total/0.8)*0.1), :unit => "£") %> if you pay the higher tax rate of 50%
 		</p>
+		<p><a href="https://twitter.com/giftaidr" class="twitter-follow-button" data-show-count="false" data-width="120px">Follow @giftaidr</a></p>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+		<%= link_to "Take Our Survey", "http://survey.io/survey/d81e7", 'data-role' => 'button', 'data-inline' => 'true', 'data-icon' => 'star' %>
 	</div>
 <% end %>
