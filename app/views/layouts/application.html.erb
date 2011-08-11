@@ -13,7 +13,7 @@
 		<% unless @welcome %>
 			<div data-role="header" class="head_bar" data-theme="b">
 				<h1><%= link_to(image_tag("giftaidr_logo_sm.png"), root_url) %></h1>
-				<%= link_to 'Add', new_donation_path, "class" => "ui-btn-right", 'data-icon' => 'plus' %>
+				<%= link_to 'Add', new_donation_path, "class" => "ui-btn-right", 'data-icon' => 'plus' if params[:controller] == "donations" %>
 			</div>
 		<% end %>
 		<%= yield %>
