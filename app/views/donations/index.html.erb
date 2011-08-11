@@ -15,19 +15,32 @@
 		</div>
 	</div>
 <% else %>
-	<div data-role="header" data-theme="c" data-backbtn="false">
+	<div id="donations_head">
 		<h1>My Donations</h1>
-		<%= link_to 'Add', new_donation_path, "class" => "ui-btn-right", 'data-icon' => 'plus' %>
 	</div>
 	<div data-role="content">
-	  <ul data-role="listview">
+	  <ul data-role="listview" data-split-icon="delete">
 	  <% @donations.each do |donation| %>
 	  	<li class="ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-btn-up-c">
-			<%= link_to donation do %>
-				<h3><%= donation.charity %></h3>
-				<p><%= number_to_currency(donation.amount, :unit => "£")+': '+short_date(donation.donation_date) %></p>
+			<div class="ui-btn-inner ui-li ui-li-has-alt">
+				<div class="ui-btn-text">
+					<%= link_to donation, :class => "ui-link-inherit" do %>
+						<h3 class="ui-li-heading"><%= donation.charity %></h3>
+						<p class="ui-li-desc"><%= number_to_currency(donation.amount, :unit => "£")+': '+short_date(donation.donation_date) %></p>
+					<% end %>
+				</div>
+			</div>
+			<%= link_to edit_donation_path(donation), "data-split-icon" => "gear", :class => "ui-li-link-alt ui-btn ui-btn-up-c" do %>
+				<span class="ui-btn-inner">
+					<span class="ui-btn-text"></span>
+					<span title="" data-theme="d" class="ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-d">
+						<span class="ui-btn-inner ui-btn-corner-all">
+							<span class="ui-btn-text"></span>
+							<span class="ui-icon ui-icon-gear ui-icon-shadow"></span>
+						</span>
+					</span>
+				</span>
 			<% end %>
-			<%= link_to 'edit donation', edit_donation_path(donation), "data-icon" => "gear" %>
 		</li>
 	<% end %>
 	  </ul>

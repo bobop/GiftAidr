@@ -1,8 +1,18 @@
 .head_bar {
 	height: 52px;
+	text-align: center;
 }
 .head_bar h1 img {
 	margin-top: 0px;
+}
+#donations_head {
+	text-align: center;
+}
+#donations_head h1 {
+	font-size: 16px;
+}
+#donations_head .add-btn-right {
+	float: right;
 }
 .logo {
 	margin: 10px auto 0 auto;
